@@ -1,0 +1,48 @@
+/**
+ * @param {String} date
+ * @returns {Object}
+ */
+module.exports = function (date) {
+
+    var dateChange = {
+        dateObj : new Date(date),
+        add: function (num, part) {
+            try {
+                switch (part) {
+                    case 'years':
+                        this.dateObj.setFullYear(this.dateObj.getFullYear(this.dateObj) + num); break;
+                    case 'months':
+                        this.dateObj.setMonth(this.dateObj.getMonth(this.dateObj) + num); break;
+                    case 'days':
+                        this.dateObj.setDate(this.dateObj.getDate(this.dateObj) + num); break;
+                    case 'hours':
+                        this.dateObj.setHours(this.dateObj.getHours(this.dateObj) + num); break;
+                    case 'minutes':
+                        this.dateObj.setMinutes(this.dateObj.getMinutes(this.dateObj) + num);
+                }
+            } catch (e) {
+                return e.name;
+            }
+        },
+        subtract: function (num, part) {
+            try {
+                switch (part) {
+                    case 'years':
+                        this.dateObj.setFullYear(this.dateObj.getFullYear(this.dateObj) - num); break;
+                    case 'months':
+                        this.dateObj.setMonth(this.dateObj.getMonth(this.dateObj) - num); break;
+                    case 'days':
+                        this.dateObj.setDate(this.dateObj.getDate(this.dateObj) - num); break;
+                    case 'hours':
+                        this.dateObj.setHours(this.dateObj.getHours(this.dateObj) - num); break;
+                    case 'minutes':
+                        this.dateObj.setMinutes(this.dateObj.getMinutes(this.dateObj) - num);
+                }
+                } catch (e) {
+                alert(e.name);
+            }
+        }
+    }
+
+    return dateChange.dateObj;
+};
