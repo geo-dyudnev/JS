@@ -1,48 +1,46 @@
-/**
- * @param {String} date
- * @returns {Object}
- */
-module.exports = function (date) {
-
-    var dateChange = {
+function cd(date) {
+	var dateChange ={};
+    return dateChange = {
         dateObj : new Date(date),
         add: function (num, part) {
-            try {
+            /*try {*/
                 switch (part) {
                     case 'years':
-                        this.dateObj.setFullYear(this.dateObj.getFullYear(this.dateObj) + num); break;
+                       return this.dateObj.setFullYear(this.dateObj.getFullYear(this.dateObj) + num); break;
                     case 'months':
-                        this.dateObj.setMonth(this.dateObj.getMonth(this.dateObj) + num); break;
+                       return this.dateObj.setMonth(this.dateObj.getMonth(this.dateObj) + num); break;
                     case 'days':
-                        this.dateObj.setDate(this.dateObj.getDate(this.dateObj) + num); break;
+                       return this.dateObj.setDate(this.dateObj.getDate(this.dateObj) + num); break;
                     case 'hours':
-                        this.dateObj.setHours(this.dateObj.getHours(this.dateObj) + num); break;
+                        return this.dateObj.setHours(this.dateObj.getHours(this.dateObj) + num); break;
                     case 'minutes':
-                        this.dateObj.setMinutes(this.dateObj.getMinutes(this.dateObj) + num);
+                        return this.dateObj.setMinutes(this.dateObj.getMinutes(this.dateObj) + num);
                 }
-            } catch (e) {
+            /*} catch (e) {
                 return e.name;
-            }
+            }*/
         },
         subtract: function (num, part) {
-            try {
+            /*try {*/
                 switch (part) {
                     case 'years':
-                        this.dateObj.setFullYear(this.dateObj.getFullYear(this.dateObj) - num); break;
+                        return this.dateObj.setFullYear(this.dateObj.getFullYear(this.dateObj) - num); break;
                     case 'months':
-                        this.dateObj.setMonth(this.dateObj.getMonth(this.dateObj) - num); break;
+                        return this.dateObj.setMonth(this.dateObj.getMonth(this.dateObj) - num); break;
                     case 'days':
-                        this.dateObj.setDate(this.dateObj.getDate(this.dateObj) - num); break;
+                        return this.dateObj.setDate(this.dateObj.getDate(this.dateObj) - num); break;
                     case 'hours':
-                        this.dateObj.setHours(this.dateObj.getHours(this.dateObj) - num); break;
+                        return this.dateObj.setHours(this.dateObj.getHours(this.dateObj) - num); break;
                     case 'minutes':
-                        this.dateObj.setMinutes(this.dateObj.getMinutes(this.dateObj) - num);
+                        return this.dateObj.setMinutes(this.dateObj.getMinutes(this.dateObj) - num);
                 }
-                } catch (e) {
-                alert(e.name);
-            }
+                /*} catch (e) {
+                return e.name;
+            }*/
         }
     }
-
-    return dateChange.dateObj;
-};
+}; var time = cd('2017-05-16 13:45')
+    .add(24, 'hours')
+    .subtract(1, 'months')
+    .add(3, 'days')
+    .add(15, 'minutes');
