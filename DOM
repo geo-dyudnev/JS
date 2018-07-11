@@ -7,7 +7,13 @@
  * @return {Element}
  */
 function createDivWithText(text) {
-}
+  var newDiv = document.createElement('div');
+  newDiv.textContent = text; 
+  newDiv.id = 1;
+  document.body.appendChild(newDiv);
+  
+  return document.getElementById(1);
+} createDivWithText('text');
 
 /**
  * Функция должна создать элемент с тегом A, установить значение для атрибута href и вернуть получившийся элемент
@@ -16,7 +22,15 @@ function createDivWithText(text) {
  * @return {Element}
  */
 function createAWithHref(hrefValue) {
-}
+  var newA = document.createElement('a');
+  newA.href = hrefValue; newA.text = 'Сцылка';
+  newA.id = 3;
+  document.body.appendChild(newA);
+  
+  return document.getElementById(3);
+} 
+
+createAWithHref('https://github.com/geo-dyudnev/JS/edit/master/DOM');
 
 /**
  * Функция должна вставлять элемент what в начало элемента where
@@ -25,7 +39,15 @@ function createAWithHref(hrefValue) {
  * @param {Element} where - куда вставлять
  */
 function prepend(what, where) {
+  
+  var whereID = document.querySelector(where); /*Почему-то не захотел работать через getElementById*/
+  whereID.appendChild(newDiv);
 }
+
+
+var newDiv = document.createElement('div');
+newDiv.textContent = 'Hello!';
+prepend(newDiv, '#container'); /*Вот в таком формате вводить данные*/
 
 /**
  * Функция должна перебрать все дочерние элементы элемента where
