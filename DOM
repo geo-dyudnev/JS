@@ -64,7 +64,20 @@ prepend(newDiv, '#container'); /*Вот в таком формате вводи�
  * т.к. следующим соседом этих элементов является элемент с тегом P
  */
 function findAllPSiblings(where) {
+  
+  var elementID = document.querySelector(where);
+  var daughtElem = elementID.children;
+  var Result = [];
+  for (var i = 0; i < daughtElem.length; i++){
+    if (daughtElem[i].tagName == 'P') {
+        Result.push(daughtElem[i].previousElementSibling); 
+        }
+      }
+  return Result;
+        
 }
+
+findAllPSiblings('#container'); 
 
 /**
  * Функция должна перебрать все дочерние узлы типа "элемент" внутри where
@@ -75,14 +88,18 @@ function findAllPSiblings(where) {
  * @return {Array<string>}
  */
 function findError(where) {
+    var elementID = document.querySelector(where);
+    var daughtElem = elementID.children;
     var result = [];
 
-    for (var i = 0; i < where.childNodes.length; i++) {
-        result.push(where.childNodes[i].innerText);
+    for (var i = 0; i < daughtElem.length; i++) {
+        result.push(daughtElem[i].innerText);
     }
 
     return result;
 }
+
+findError('#container');
 
 /**
  * Функция должна перебрать все дочерние узлы элемента where
@@ -98,7 +115,16 @@ function findError(where) {
  * должно быть преобразовано в <div></div><p></p>
  */
 function deleteTextNodes(where) {
-}
+    var elementID = document.querySelector(where);
+    var daughtElem = elementID.childNodes;
+
+    for (var i = 0; i < daughtElem.length; i++) {
+        if (daughtElem[i].nodeType = 'text'){
+          daughtElem[i].textContent = undefined; /*Не уверен, что это правильное решение, но результат получен*/
+        }
+    }
+
+}deleteTextNodes('#container');
 
 /**
  * Выполнить предудыщее задание с использование рекурсии
