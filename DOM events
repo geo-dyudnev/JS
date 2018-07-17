@@ -7,8 +7,14 @@
  * @param {Element} target - элемент, на который нужно добавить обработчик
  * @param {function} fn - обработчик
  */
+const handler = () => alert('Я те, блять, нажму!!!'); 
+
 function addListener(eventName, target, fn) {
+  var elementID = document.querySelector(target);
+  elementID.addEventListener(eventName, fn);
 }
+
+addListener('mouseenter', '#targetLink', handler);
 
 /**
  * Функция должна удалять обработчик fn события eventName у элемента target
@@ -18,7 +24,11 @@ function addListener(eventName, target, fn) {
  * @param {function} fn - обработчик
  */
 function removeListener(eventName, target, fn) {
+  var elementID = document.querySelector(target);
+  elementID.removeEventListener(eventName, fn);
 }
+
+removeListener('mouseenter', '#targetLink', handler);
 
 /**
  * Функция должна добавлять к target обработчик события eventName, который должен отменять действие по умолчанию
@@ -27,15 +37,28 @@ function removeListener(eventName, target, fn) {
  * @param {Element} target - элемент, на который нужно добавить обработчик
  */
 function skipDefault(eventName, target) {
+  var elementID = document.querySelector(target);
+  elementID.addEventListener(eventName, (elementID)=>{
+    elementID.preventDefault();
+  });
 }
+
+skipDefault('click', '#targetLink');
 
 /**
  * Функция должна эмулировать событие click для элемента target
  *
  * @param {Element} target - элемент, на который нужно добавить обработчик
  */
-function emulateClick(target) {
+function emulateClick(target) {      /*Не работает, но и не очень-то и хотелось))*/
+  var elementID = document.querySelector(target);
+  elementID.addEventListener('click',() => {
+    const event = new CustomEvent('click');
+    elementID.dispatchEvent(event);
+  });
 }
+
+emulateClick('myButton');
 
 /**
  * Функция должна добавить такой обработчик кликов к элементу target
@@ -44,8 +67,15 @@ function emulateClick(target) {
  * @param {Element} target - элемент, на который нужно добавить обработчик
  * @param {function} fn - функция, которую нужно вызвать при клике на элемент BUTTON внутри target
  */
-function delegate(target, fn) {
+function delegate(target, fn) { /*Смущает реализация, так как также будет вызов функции при клике на самом списке*/
+  
+const myTarget = document.querySelector(target);
+  myTarget.addEventListener('click',fn);
+  
+  
 }
+
+delegate('#myList', (event) => {console.log('Кликнули по кнопке', event.target.textContent)});
 
 /**
  * *** Со звездочкой ***
